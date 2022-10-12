@@ -299,26 +299,37 @@ def mnb_accuracy(y_pred, y_true):
 
 
 # Testing
-# data_file = 'coronavirus_tweets.csv'
-# df = read_csv_3(data_file)
-# # print(df)
-# y_p = mnb_predict(df)
-# # df['Sentiment'].array
-# # print(y_p.index())
-# acc = mnb_accuracy(y_p, df['Sentiment'].array)
-# print(acc)
-# print(p.ndim)
-#
-# data_file = 'coronavirus_tweets.csv'
-# df1 = read_csv_3(data_file)
-# lower_case(df1)
-# remove_non_alphabetic_chars(df1)
-# remove_multiple_consecutive_whitespaces(df1)
-# tokenize(df1)
-# temp = count_words_with_repetitions(df1)
-# temp2 = count_words_without_repetitions(df1)
-# print(temp)
-# print(temp2)
-# print(df1['OriginalTweet'])
+data_file = 'coronavirus_tweets.csv'
+df = read_csv_3(data_file)
 
+# Part 3
+y_p = mnb_predict(df)
+acc = mnb_accuracy(y_p, df['Sentiment'].array)
+print(f'Classifier training accuracy: {acc}')
+
+# Part 1
+print('')
+sentiment_lst = get_sentiments(df)
+print(f'Possible sentiment: {sentiment_lst}')
+second_sentiment = second_most_popular_sentiment(df)
+print(f'Second possible sentiment: {second_sentiment}')
+date = date_most_popular_tweets(df)
+print(f'Date most popular tweets: {date}')
+
+# Part 2
+lower_case(df)
+remove_non_alphabetic_chars(df)
+remove_multiple_consecutive_whitespaces(df)
+tokenize(df)
+count_word_repetition = count_words_with_repetitions(df)
+print('')
+print(f'Word with repetition: {count_word_repetition}')
+count_word_withoutrepet = count_words_without_repetitions(df)
+print(f'Word without repetition: {count_word_withoutrepet}')
+frequent_word_10 = frequent_words(df, 10)
+print(f'The 10 most frequent word: {frequent_word_10}')
+remove_stop_words(df)
+stemming(df)
+frequent_word_10_no_stop_word = frequent_words(df, 10)
+print(f'The 10 most frequent word without stop words and after stemming: {frequent_word_10_no_stop_word}')
 
